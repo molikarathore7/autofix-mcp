@@ -1,0 +1,21 @@
+1. The exact bug is a KeyError when trying to access 'email_address' from the customer dictionary in the get_email endpoint.
+2. The dictionary stores email under the key 'email', but the code attempts to retrieve it using the non-existent key 'email_address'.
+3. Change customer["email_address"] to customer["email"] in the get_email function.
+4. Corrected Code Snippet:
+@app.get("/customer-email")
+def get_email():
+
+    try:
+
+        customer = customers[0]
+
+        # Intentional Bug
+        return customer["email"]
+
+    except Exception as e:
+
+        logging.error(f"Customer Email Error: {str(e)}")
+
+        return {
+            "error": str(e)
+        }
