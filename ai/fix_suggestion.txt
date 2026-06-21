@@ -1,14 +1,8 @@
-1. Identify the exact bug.
-The `/customer-email` endpoint attempts to retrieve a customer's email using the dictionary key 'email_address', but the email is stored under the key 'email' when a customer is added.
+Exact bug: The get_email endpoint attempts to retrieve customer email using the key "email_address" instead of the correct key "email".
+Explanation: A KeyError occurs because the dictionary key "email_address" does not exist in the customer object.
+Suggest the fix: Replace "email_address" with "email" when accessing the customer dictionary.
 
-2. Explain why it occurred in short one line.
-There is a mismatch between the dictionary key used to store the email and the key used to retrieve it.
-
-3. Suggest the fix in short one line.
-Change the key from `customer["email_address"]` to `customer["email"]` in the `/customer-email` endpoint.
-
-4. Return the corrected code snippet.
-
+Corrected code snippet:
 @app.get("/customer-email")
 def get_email():
 
