@@ -1,27 +1,11 @@
 1. Identify the exact bug.
-The bug is a KeyError when attempting to access a customer's email using the incorrect dictionary key 'email_address' instead of the correct key 'email'.
+The bug is a KeyError in the /customer-email endpoint where it attempts to access the email using the dictionary key 'email_address' instead of the correct key 'email'.
 
 2. Explain why it occurred in short one line.
-The code attempts to retrieve the customer's email using the key 'email_address' which does not exist, instead of the defined key 'email'.
+The application tries to retrieve an email using an incorrect dictionary key 'email_address' when the stored key is 'email'.
 
 3. Suggest the fix in short one line.
-Change customer["email_address"] to customer["email"] in the get_email endpoint.
+Change the dictionary key from 'email_address' to 'email' in the /customer-email endpoint.
 
 4. Return the corrected code snippet.
-@app.get("/customer-email")
-def get_email():
-
-    try:
-
-        customer = customers[0]
-
-        # Intentional Bug
-        return customer["email"] # Corrected from "email_address"
-
-    except Exception as e:
-
-        logging.error(f"Customer Email Error: {str(e)}")
-
-        return {
-            "error": str(e)
-        }
+        return customer["email"]
