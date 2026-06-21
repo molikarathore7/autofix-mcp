@@ -1,11 +1,11 @@
 1. Identify the exact bug.
-The code attempts to access the customer's email using the key 'email_address' which does not exist in the customer dictionary.
+The get_email endpoint attempts to access the customer's email using the key "email_address" when the stored customer objects use the key "email".
 
 2. Explain why it occurred in short one line.
-The customer dictionary stores the email under the key 'email', not 'email_address'.
+A KeyError occurs because the dictionary key "email_address" does not exist; the correct key is "email".
 
 3. Suggest the fix in short one line.
-Change the dictionary key from 'email_address' to 'email'.
+Change the dictionary access from customer["email_address"] to customer["email"].
 
 4. Return the corrected code snippet.
 @app.get("/customer-email")
@@ -15,7 +15,7 @@ def get_email():
 
         customer = customers[0]
 
-        # Intentional Bug
+        # Intentional Bug Fixed
         return customer["email"]
 
     except Exception as e:

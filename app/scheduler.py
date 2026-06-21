@@ -79,18 +79,21 @@ def check_logs():
         print(e)
 
 
-# Run every 20 seconds
-schedule.every(20).seconds.do(check_logs)
+# ====================================
+# Run every 12 hours
+# ====================================
+
+schedule.every(12).hours.do(check_logs)
 
 print("===================================")
 print("Scheduler Started")
-print("Checking logs every 20 seconds...")
+print("Checking logs every 12 hours...")
 print("===================================")
 
-# Run once immediately
+# Run once immediately when scheduler starts
 check_logs()
 
 # Keep scheduler running forever
 while True:
     schedule.run_pending()
-    time.sleep(1)
+    time.sleep(60)
