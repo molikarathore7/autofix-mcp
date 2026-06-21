@@ -5,12 +5,12 @@ import subprocess
 
 def check_logs():
     try:
-        # Open error log file
+        # Open log file
         with open("app/logs/error.log", "r") as file:
 
             logs = file.read()
 
-            # If log file contains errors
+            # Check if log contains any errors
             if logs.strip():
 
                 print("\n===================================")
@@ -28,12 +28,12 @@ def check_logs():
 
                 print("\nCreating Git Commit...\n")
 
-                # Add changed files
+                # Add files to Git
                 subprocess.run(
                     ["git", "add", "."]
                 )
 
-                # Create commit
+                # Create Git Commit
                 subprocess.run(
                     [
                         "git",
@@ -44,6 +44,26 @@ def check_logs():
                 )
 
                 print("\nGit Commit Created Successfully")
+
+                # Push to GitHub
+                print("\nPushing to GitHub...\n")
+
+                subprocess.run(
+                    [
+                        "git",
+                        "push",
+                        "origin",
+                        "ai-fix-branch"
+                    ]
+                )
+
+                print("\nGitHub Push Completed")
+
+                # Clear log file
+                with open("app/logs/error.log", "w") as file:
+                    file.write("")
+
+                print("\nError log cleared")
 
             else:
 
@@ -67,7 +87,7 @@ print("Scheduler Started")
 print("Checking logs every 20 seconds...")
 print("===================================")
 
-# Run immediately once
+# Run once immediately
 check_logs()
 
 # Keep scheduler running forever
