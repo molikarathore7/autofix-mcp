@@ -1,2 +1,3 @@
-2026-07-01 12:44:48,532 - ERROR - Application Started - Test Log Entry
-2026-07-01 12:44:48,812 - ERROR - Application Started - Test Log Entry
+2026-07-01 12:47:26,062 - ERROR - Customer Email Error: list index out of range
+2026-07-01 12:47:29,308 - ERROR - Customer Email Error: list index out of range
+2026-07-01 12:51:05,180 - ERROR - Customer Email Error: 'email_address'
